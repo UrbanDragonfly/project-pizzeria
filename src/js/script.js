@@ -86,8 +86,10 @@
       thisProduct.id = id;
       thisProduct.data = data;
       thisProduct.renderInMenu();
+      thisProduct.getElements();
       thisProduct.initAccordion();
-      console.log('new Product:', thisProduct);
+      thisProduct.initOrderForm();
+      thisProduct.processOrder();
     }
 
     renderInMenu(){
@@ -105,13 +107,25 @@
       menuContainer.appendChild(thisProduct.element);
     }
 
+    getElements(){
+      const thisProduct = this;
+
+      thisProduct.accordionTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
+      thisProduct.form = thisProduct.element.querySelector(select.menuProduct.form);
+      thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
+      thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
+      thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+      console.log('>acordionTrigger>:', thisProduct.accordionTrigger);
+      console.log('>form>>>>>>>>>>>>:', thisProduct.form);
+      console.log('>formInputs>>>>>>:', thisProduct.formInputs);
+      console.log('>cartButton>>>>>>:', thisProduct.cartButton);
+      console.log('>priceElem>>>>>>>:', thisProduct.priceElem);
+    }
+
     initAccordion(){
       const thisProduct = this;
-      /* find the clckable trigger (the element that should react to clicking) */
-      const clickableTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
-
       /*START: add event listener to clickable trigger on event click. */
-      clickableTrigger.addEventListener('click', function(event) {
+      thisProduct.accordionTrigger.addEventListener('click', function(event) {
 
         /*prevent default action for event */
         event.preventDefault();
@@ -127,8 +141,18 @@
         /* toggle active class on thisProduct.element */
         thisProduct.element.classList.toggle('active');
       });
-
     }
+
+    initOrderForm(){
+      const thisProduct = this;
+      console.log('thisProduct initOrderForm:', thisProduct);
+    }
+
+    processOrder(){
+      const thisProduct = this;
+      console.log('thisProduct processOrder:', thisProduct);
+    }
+
   }
 
   app.init();
