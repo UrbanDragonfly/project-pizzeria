@@ -409,7 +409,7 @@
       let subTotalPrice = 0;
 
       for(let product of thisCart.products){
-        totalNumber =+ product.amount;
+        totalNumber += product.amount;
         subTotalPrice += product.price;
       }
 
@@ -422,8 +422,8 @@
       thisCart.dom.deliveryFee.innerHTML = deliveryFee;
       thisCart.dom.subTotalPrice.innerHTML = subTotalPrice;
       thisCart.dom.totalNumber.innerHTML = totalNumber;
-      [].forEach.call(thisCart.dom.totalPrice, function(totalP) {
-        totalP.innerHTML = thisCart.totalPrice;
+      [].forEach.call(thisCart.dom.totalPrice, function(total) {
+        total.innerHTML = thisCart.totalPrice;
       });
 
     }
